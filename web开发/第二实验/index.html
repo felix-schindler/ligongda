@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>第二实验</title>
+
+	<link rel="stylesheet" href="./style/main.css">
+	<script src="./script/main.js" type="module"></script>
+</head>
+<body>
+	<header>
+		<h1>第二实验</h1>
+		<nav>
+			<a href="./site_1.html">第1页</a>
+			<a href="./site_2.html">第2页</a>
+			<a href="./site_3.html">第3页</a>
+			<a href="./site_4.html">第4页</a>
+		</nav>
+	</header>
+	<main>
+		<div>
+			<h2><code>iframe</code></h2>
+			<iframe src="./site_1.html" frameborder="0" width="400" height="400"></iframe>
+		</div>
+		<div>
+			<h2>拖拽操作</h2>
+			<div class="images">
+				<img id="img-1" src="./assets/flower.jpg" alt="Pretty flower" draggable="true">
+				<img id="img-2" src="./assets/building.png" alt="Chinese building; Night; Red lights" draggable="true">
+				<img id="img-3" src="./assets/korea.jpeg" alt="Street in Korea" draggable="true">
+			</div>
+			<div id="dropZone" class="images"></div>
+		</div>
+		<div>
+			<h2>canvas</h2>
+			<h3>矩形</h3>
+			<canvas id="rectangle"></canvas>
+			<h3>笑脸</h3>
+			<canvas id="face"></canvas>
+		</div>
+	</main>
+	<footer>
+		2024 &copy; Felix Schindler
+	</footer>
+</body>
+</html>

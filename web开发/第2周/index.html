@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>File Input</title>
+
+	<style>
+		:root {
+			font-family: system-ui, sans-serif;
+			color-scheme: light dark;
+
+			--gray: #DDD;
+			--on-gray: #666;
+		}
+
+		@media screen and (prefers-color-scheme: dark) {
+			:root {
+				--gray: #333;
+				--on-gray: #DDD;
+			}
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+		}
+
+		main {
+			padding: 0 1rem;
+			width: calc(100% - 2rem);
+		}
+
+		div#images {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 1rem;
+		}
+
+		div#images img {
+			max-width: 100%;
+			border-radius: .5rem;
+		}
+
+		#dropZone {
+			display: grid;
+			place-items: center;
+
+			width: 100%;
+			min-height: 300px;
+			border-radius: .5rem;
+
+			margin: 1rem 0;
+
+			color: var(--on-gray);
+			background-color: var(--gray);
+			border: 1px dashed;
+		}
+	</style>
+
+	<script>
+		window.onload = () => {
+			// #region File input
+			const fileInput = document.getElementById("file-input");
+			const fileSpecs = document.getElementById("file-specs");
+			const images = document.getElementById("images");
+
+			fileInput.addEventListener("change", (event) => {
+				for (const file of fileInput.files) {
+					const name = document.createElement("p");
+					name.textContent = `名称: ${file.name}`;
+
+					const size = document.createElement("p");
+					size.textContent = `大小: ${(file.size / 1_000_000).toFixed(2)} mb`;
+
+					const type = document.createElement("p");
+					type.textContent = `类型: ${file.type}`;
+
+					const preview = document.createElement("img");
+					preview.id = `${file.name}-${file.size}-${crypto.randomUUID()}`;
+					preview.draggable = true;
+					preview.src = URL.createObjectURL(file).toString();
+
+					fileSpecs.append(name, size, type);
+					images.append(preview);
+				}
+			});
+			// #endregion File input
+
+			// #region File drop
+			const dragImage = document.getElementById("draggableImage");
+			const dropZone = document.getElementById("dropZone");
+
+			dropZone.addEventListener("dragover", (event) => {
+				event.preventDefault();
+				console.log("Drag over", event)
+			})
+
+			dropZone.addEventListener("drop", (event) => {
+				event.preventDefault();
+				console.log("Received a drop", event)
+			})
+			// #endregion File drop
+		}
+	</script>
+</head>
+<body>
+	<main>
+		<h1 lang="en">File input and image drag'n'drop</h1>
+		<form>
+			<input id="file-input" type="file" accept="image/*">
+		</form>
+		<div id="file-specs">
+			<p id="name"></p>
+			<p id="size"></p>
+			<p id="type"></p>
+		</div>
+		<div id="images">
+		</div>
+		<div id="dropZone">
+			<p>Drop images here</p>
+		</div>
+	</main>
+</body>
+</html>

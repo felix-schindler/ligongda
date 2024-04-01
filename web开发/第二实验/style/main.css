@@ -1,0 +1,30 @@
+@import url("./drag-drop.css");
+
+:root {
+	font-family: system-ui, sans-serif;
+	color-scheme: light dark;
+
+	--gray: #DDD;
+	--on-gray: #666;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--gray: #333;
+		--on-gray: #DDD;
+	}
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+}
+
+header, footer {
+	padding: 1rem;
+}
+
+main {
+	padding: 0 1rem;
+	width: calc(100% - 2rem);
+}

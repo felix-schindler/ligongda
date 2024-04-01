@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Felix Schindler">
+
+	<link rel="stylesheet" href="./style.css">
+	<script src="./script.js"></script>
+
+	<title>移动Web开发 - 主页</title>
+</head>
+<body>
+	<header>
+		<h1>移动Web开发 - 主页</h1>
+		<nav>
+			<a href="./">主页</a>
+			<a href="./another.html">另一页 page</a>
+		</nav>
+	</header>
+
+	<main>
+		<div>
+			<p>移动Web开发是指在移动设备上开发网站和应用程序的技术。</p>
+			<p>我们在<mark>西安理工大学</mark>和<mark>斯图加特媒体大学</mark>学习。</p>
+		</div>
+
+		<figure>
+			<img src="./flower.jpg" width="300">
+			<figcaption lang="en">It's a flower. A pretty flower.</figcaption>
+		</figure>
+
+		<form method="get">
+			<input type="text" name="student_number" placeholder="请输入学号" required autofocus />
+			<input type="text" name="student_name" placeholder="请输入姓名" pattern="[a-zA-Z]*$">
+			<button type="submit">下一步</button>
+		</form>
+
+		<audio src="./song.mp3" controls>
+			您的浏览器不支持 audio 元素。
+		</audio>
+
+		<video width="300" preload controls muted>
+			<source src="./reh.mov" />
+			您的浏览器不支持 video 元素。
+		</video>
+	</main>
+
+	<footer>
+		&copy; Felix Schindler <small>2024</small>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,25 @@
+div.images {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
+	margin: 1rem;
+}
+
+div.images > * {
+	max-width: 100%;
+	border-radius: .5rem;
+}
+
+#dropZone {
+	min-height: 300px;
+	background-color: var(--gray);
+	border: 1px dashed;
+	border-radius: .5rem;
+
+	padding: 1rem;
+}
+
+#dropZone:empty::after {
+	color: var(--on-gray);
+	content: "Drop images here";
+}
