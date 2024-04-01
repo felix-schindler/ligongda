@@ -1,0 +1,19 @@
+name: Web开发
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "web开发/**"
+
+jobs:
+  deploy:
+    name: Sample
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Sample
+        run: echo This could actually do something

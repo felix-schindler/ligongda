@@ -1,0 +1,19 @@
+name: 游戏开发-RTS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "游戏开发/*/rts/**"
+
+jobs:
+  deploy:
+    name: Sample
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Sample
+        run: echo This could actually do something
