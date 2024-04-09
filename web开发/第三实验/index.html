@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>实验三</title>
+
+	<link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
+	<style>
+		body {
+			margin: 1rem;
+		}
+
+		.form-label {
+			font-size: larger;
+		}
+	</style>
+
+	<script>
+		/**
+		 * @param {number} value
+		 */
+		function updateOutput(value) {
+			document.getElementById("work-hours-output").textContent = value;
+		}
+
+		/**
+		 * @param {MouseEvent} event
+		 */
+		function validateForm(event) {
+			const form = event.target.form;
+			const inputs = form.querySelectorAll("input, select, textarea");
+
+			for (const input of inputs) {
+				if (!input.checkValidity()) {
+					alert(`Invalid input: ${input.validity} ${input.id}`);
+					return;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<h3 style="text-align: center;">E-M 在线注册</h3>
+
+	<form
+		onsubmit="event.preventDefault()"
+		class="d-flex flex-column gap-3"
+	>
+		<div>
+			<label for="account-number" class="form-label">账号</label>
+			<input id="account-number" type="text" pattern="[A-Za-z]" required autofocus class="form-control">
+		</div>
+
+		<div>
+			<label for="password" class="form-label">密码</label>
+			<input id="password" type="password" required class="form-control">
+		</div>
+
+		<div>
+			<label for="nick-name" class="form-label">昵称</label>
+			<input id="nick-name" type="text" required class="form-control">
+		</div>
+
+		<div>
+			<label for="real-name" class="form-label">真实姓名</label>
+			<input id="real-name" type="text" required class="form-control">
+		</div>
+
+		<div>
+			<label for="email" class="form-label">邮箱</label>
+			<input id="email" type="email" required class="form-control">
+		</div>
+
+		<div>
+			<label for="phone" class="form-label">手机号码</label>
+			<input id="phone" type="tel" required class="form-control">
+		</div>
+
+		<div>
+			<p class="form-label">性別</p>
+
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="sex" id="sex-female">
+				<label class="form-check-label" for="sex-female">
+					女
+				</label>
+			</div>
+
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="sex" id="sex-male">
+				<label class="form-check-label" for="sex-male">
+					男
+				</label>
+			</div>
+		</div>
+
+		<div>
+			<p class="form-label">个人爱好</p>
+
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="hobby-basketball" value="1">
+				<label class="form-check-label" for="hobby-basketball">
+					篮球
+				</label>
+			</div>
+		</div>
+
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" id="hobby-other" value="1">
+			<label class="form-check-label" for="hobby-other">
+				其他
+			</label>
+			<textarea id="hobby-other-favorite" class="form-control" rows="3" placeholder="最喜欢的其他爱好"></textarea>
+		</div>
+
+		<div>
+			<label class="form-label" for="birth-date">
+				生日
+			</label>
+			<input class="form-control" type="date" id="birth-date" value="1">
+		</div>
+
+		<div>
+			<label class="form-label" for="age">
+				岁数
+			</label>
+			<input class="form-control" type="number" id="age" min="0">
+		</div>
+
+		<div>
+			<label class="form-label" for="marriage-time">
+				婚事时候
+			</label>
+			<input class="form-control" type="datetime" id="marriage-time">
+		</div>
+
+		<div>
+			<label class="form-label" for="favorite-color">
+				最喜欢的颜色
+			</label>
+			<input class="form-control" type="color" value="#FF0000" id="favorite-color">
+		</div>
+
+		<div>
+			<label class="form-label" for="work-hours">
+				你每周工作多长时间？
+			</label>
+			<input
+				type="range"
+				min="0"
+				max="168"
+				step="1"
+				value="40"
+
+				id="work-hours"
+				class="form-range"
+
+				oninput="updateOutput(Number(event.target.value))"
+				onchange="updateOutput(Number(event.target.value))"
+			>
+			<output id="work-hours-output" for="work-hours">40</output>个小时
+		</div>
+
+		<div>
+			<label for="career" class="form-label">职业</label>
+			<select id="career" class="form-select">
+				<option selected>打开所选内容</option>
+				<option value="stu">学生</option>
+				<option value="tea">老师</option>
+				<option value="opel">Opel</option>
+				<option value="other">Other</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="city" class="form-label">城市</label>
+			<input class="form-control" list="city-options" id="city">
+			<datalist id="city-options">
+				<option value="斯图加特（Stuttgart）">
+				<option value="西安（Xi'an）">
+			</datalist>
+		</div>
+
+		<div class="my-3">
+			<button type="submit" class="btn btn-primary">提交</button>
+			<button type="button" onclick="validateForm(event)" class="btn btn-success">验证</button>
+			<button type="reset" class="btn btn-danger">充值</button>
+		</div>
+	</form>
+
+	<script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
