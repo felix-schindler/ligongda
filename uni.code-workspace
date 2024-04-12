@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "Config",
+			"path": "."
+		},
+		{
+			"name": "web开发",
+			"path": "./web开发"
+		},
+		{
+			"name": "游戏开发 - 实验一",
+			"path": "./游戏开发/rts"
+		},
+		{
+			"name": "数据库",
+			"path": "./数据库"
+		},
+	],
+	"settings": {}
+}
