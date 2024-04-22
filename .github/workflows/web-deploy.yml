@@ -10,10 +10,10 @@ on:
 jobs:
   deploy:
     name: Sample
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-      - name: Sample
-        run: echo This could actually do something
+      - name: Deploy
+        run: rsync -avhrz --delete ./web开发/ /srv/archive/uni/web开发/
