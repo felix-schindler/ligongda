@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>实验五</title>
+
+	<link rel="stylesheet" href="./scripts/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="./scripts/jquery.js"></script>
+	<script src="./scripts/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<script>
+		window.onload = () => {
+			$(".selector").flipswitch({
+				classes: {
+					"ui-flipswitch": "highlight"
+				}
+			});
+		}
+	</script>
+</head>
+
+<body>
+	<label for="my-flip">This is a flipswitch:</label>
+	<input id="my-flip" type="checkbox" data-role="flipswitch">
+</body>
+
+</html>
