@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    name: Sample
+    name: Deploy
     runs-on: self-hosted
 
     steps:
