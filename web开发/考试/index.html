@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		:root {
+			color-scheme: light dark;
+		}
+
+		body {
+			font-size: 2rem;
+		}
+	</style>
+
+	<script>
+		/**
+		 * @param {GeolocationPositionError} e
+		 */
+		function onError(e) {
+			console.error("Sth failed")
+
+			// Error
+			if (e.PERMISSION_DENIED) {
+				alert("Permission has been denied")
+			}
+
+			if (e.POSITION_UNAVAILABLE) {
+				alert("Position is unavailable")
+			}
+
+			if (e.TIMEOUT) {
+				alert("Position timeout")
+			}
+
+			// Show error message in body
+			const p = document.createElement("p");
+			p.textContent = `${e.code}: ${e.message}`;
+			document.body.appendChild(p);
+		}
+
+		function currentPos() {
+			console.log("Button pressed")
+
+			navigator.geolocation.getCurrentPosition((e) => {
+				// Success
+				console.log("Success")
+
+				const p = document.createElement("p")
+				p.textContent = `${e.timestamp}: ${e.coords}`
+				document.body.appendChild(p);
+			}, onError);
+		}
+
+		function watchPos() {
+			console.log("Button pressed")
+
+			navigator.geolocation.watchPosition((e) => {
+				// Success
+				console.log("Success")
+
+				const p = document.createElement("p")
+				p.textContent = `${e.timestamp}: ${e.coords}`
+				document.body.appendChild(p);
+			}, onError);
+		}
+	</script>
+</head>
+
+<body>
+	<p>Works!</p>
+	<h1>Geolocation</h1>
+	<button type="button" onclick="currentPos()">Get current position</button>
+	<button type="button" onclick="watchPos()">Watch position</button>
+</body>
+
+</html>
