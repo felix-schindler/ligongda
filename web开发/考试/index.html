@@ -49,9 +49,16 @@
 				// Success
 				console.log("Success")
 
-				const p = document.createElement("p")
-				p.textContent = `${e.timestamp}: ${e.coords}`
-				document.body.appendChild(p);
+				const h2 = document.createElement("h2")
+				h2.textContent = e.timestamp;
+				const p = document.createElement("p");
+				Object.entries(e.coords).forEach(([k, v]) => {
+					const span = document.createElement("span");
+					span.textContent = `${k}: ${v}`;
+					p.appendChild(span);
+				});
+
+				document.body.append(h2, p);
 			}, onError);
 		}
 
@@ -62,9 +69,16 @@
 				// Success
 				console.log("Success")
 
-				const p = document.createElement("p")
-				p.textContent = `${e.timestamp}: ${e.coords}`
-				document.body.appendChild(p);
+				const h2 = document.createElement("h2")
+				h2.textContent = e.timestamp;
+				const p = document.createElement("p");
+				Object.entries(e.coords).forEach(([k, v]) => {
+					const span = document.createElement("span");
+					span.textContent = `${k}: ${v}`;
+					p.appendChild(span);
+				});
+
+				document.body.append(h2, p);
 			}, onError);
 		}
 	</script>
