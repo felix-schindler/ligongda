@@ -10,31 +10,35 @@
 		:root {
 			color-scheme: light dark;
 		}
-
-		body {
-			font-size: 2rem;
-		}
 	</style>
 
 	<script>
 		/**
+		 * @param {GeolocationPosition} e
+		 */
+		function onSuccess(e) {
+			console.log("Success");
+
+			const div = document.createElement("div");
+
+			const h2 = document.createElement("h2");
+			h2.textContent = new Date(e.timestamp).toLocaleTimeString();
+			div.appendChild(h2);
+
+			Object.entries(e.coords).forEach(([k, v]) => {
+				const p = document.createElement("p");
+				p.textContent = `${k}: ${v}`;
+				div.appendChild(p);
+			});
+
+			document.body.appendChild(div);
+		}
+
+		/**
 		 * @param {GeolocationPositionError} e
 		 */
 		function onError(e) {
-			console.error("Sth failed")
-
-			// Error
-			if (e.PERMISSION_DENIED) {
-				alert("Permission has been denied")
-			}
-
-			if (e.POSITION_UNAVAILABLE) {
-				alert("Position is unavailable")
-			}
-
-			if (e.TIMEOUT) {
-				alert("Position timeout")
-			}
+			console.error("Sth failed");
 
 			// Show error message in body
 			const p = document.createElement("p");
@@ -43,43 +47,13 @@
 		}
 
 		function currentPos() {
-			console.log("Button pressed")
-
-			navigator.geolocation.getCurrentPosition((e) => {
-				// Success
-				console.log("Success")
-
-				const h2 = document.createElement("h2")
-				h2.textContent = e.timestamp;
-				const p = document.createElement("p");
-				Object.entries(e.coords).forEach(([k, v]) => {
-					const span = document.createElement("span");
-					span.textContent = `${k}: ${v}`;
-					p.appendChild(span);
-				});
-
-				document.body.append(h2, p);
-			}, onError);
+			console.log("Button pressed");
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		}
 
 		function watchPos() {
-			console.log("Button pressed")
-
-			navigator.geolocation.watchPosition((e) => {
-				// Success
-				console.log("Success")
-
-				const h2 = document.createElement("h2")
-				h2.textContent = e.timestamp;
-				const p = document.createElement("p");
-				Object.entries(e.coords).forEach(([k, v]) => {
-					const span = document.createElement("span");
-					span.textContent = `${k}: ${v}`;
-					p.appendChild(span);
-				});
-
-				document.body.append(h2, p);
-			}, onError);
+			console.log("Button pressed");
+			navigator.geolocation.watchPosition((e) => onSuccess, onError);
 		}
 	</script>
 </head>
