@@ -12,7 +12,7 @@
 
 	<script>
 		window.onload = () => {
-			$(".selector").flipswitch({
+			$("#my-flip").flipswitch({
 				classes: {
 					"ui-flipswitch": "highlight"
 				}
@@ -22,8 +22,14 @@
 </head>
 
 <body>
-	<label for="my-flip">This is a flipswitch:</label>
-	<input id="my-flip" type="checkbox" data-role="flipswitch">
+	<div data-role="page">
+		<div data-role="header">This is a header</div>
+		<div role="main" class="ui-content">
+			<label for="my-flip">This is a flipswitch:</label>
+			<input id="my-flip" type="checkbox" data-role="flipswitch">
+		</div>
+		<div data-role="footer">This is a footer</div>
+	</div>
 </body>
 
 </html>
